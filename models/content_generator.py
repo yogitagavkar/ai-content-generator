@@ -27,42 +27,56 @@ class ContentGenerator:
 
         for _ in range(3):
             prompt = f"""
-            Write a high-quality {platform} post about {topic}.
+            Write a high-quality {platform} post about: {topic}
 
-            Requirements (MANDATORY):
-            - Include a song name
-            - Include singer name
-            - Do NOT include any links or URLs
-            - Do NOT include code
-            - Use simple, clean English
+                General Rules:
+                - Use simple, clean English
+                - Do NOT include any links or URLs
+                - Do NOT include code
+                - Keep content relevant to topic
 
-            Platform-specific rules:
+                Content Rules:
 
-            If platform is LinkedIn:
-            - Professional tone
-            - Add 2–3 bullet points
-            - Add insight or value
-            - End with 3–5 relevant hashtags
+                If the topic is about music / songs:
+                - Include:
+                Song: <song name>
+                Singer: <singer name>
 
-            If platform is Instagram:
-            - Focus on reel-style content
-            - Add emotional or vibe-based language
-            - Include 1–2 emojis
-            - Keep it engaging and trendy
-            - Add 5–8 hashtags
+                If the topic is about news, crime, or sensitive issues:
+                - DO NOT include song or singer
+                - Use respectful and serious tone
+                - Focus on awareness, empathy, or facts
+                - Avoid exaggeration
 
-            If platform is Twitter:
-            - Keep it very short (max 2–3 lines)
-            - Make it catchy and impactful
-            - No bullet points
-            - Add 2–3 hashtags
+                Platform Rules:
 
-            Format:
-            Song: <song name>
-            Singer: <singer name>
+                If platform is LinkedIn:
+                - Professional tone
+                - Add 2–3 bullet points
+                - Add 3–5 hashtags
 
-            Post:
-            <final post>
+                If platform is Instagram:
+                - Emotional + engaging tone
+                - Use 1–2 emojis (only if appropriate)
+                - Add 5–8 hashtags
+
+                If platform is Twitter:
+                - Very short (2–3 lines)
+                - No bullet points
+                - Add 2–3 hashtags
+
+                Output Format:
+
+                If music topic:
+                Song: <name>
+                Singer: <name>
+
+                Post:
+                <content>
+
+                If NOT music topic:
+                Post:
+                <content>
             """
 
             response = self.client.chat.completions.create(
