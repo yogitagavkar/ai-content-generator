@@ -1,7 +1,5 @@
 streamlit
-transformers
-torch
+openai
 requests
 sqlalchemy
 python-dotenv
-boto3
